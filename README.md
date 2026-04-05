@@ -4,11 +4,22 @@ Ce projet vise à prédire la probabilité et l'occurrence de panne de Véhicule
 Il s'agit d'un problème de classification par apprentissage supervisé.
 Les données sont fictives et servent de démonstration technique.
 
-## Approche
+## Modélisation
 
 J'ai comparé deux modèles d'apprentissage automatique :
 1. **Régression Logistique** : Pour son explicabilité (analyse des coefficients)
-3. **Forêt aléatoire** : Pour sa robustesse face aux données atypiques
+2. **Forêt aléatoire** : Pour sa robustesse face aux données atypiques
+
+## Données
+
+Le projet s'appuie sur un jeu de données de maintenance (format CSV). 
+1. **Fichier source** : `data/donnees_vab_brutes.csv`
+2. **Variables clés** : 
+   1. `km` : Kilométrage au compteur.
+   2. `etat` : État moteur (0: Critique, 1: Moyen, 2: Bon).
+   3. `panne` : Variable cible (0: RAS, 1: Panne détectée).
+
+> **Note technique** : Les scripts disposent d'une sécurité (fallback). Si le fichier CSV est absent, un jeu de données de test est automatiquement généré pour permettre l'exécution du code sans erreur. Ce jeu de données est celui qui a été utilisé pour généré les modèles présents dans le répertoire `models/`
 
 ## Installation
 
