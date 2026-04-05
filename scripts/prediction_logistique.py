@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 
 # 1. Chargement des "cerveaux" sauvegardés
-modele = joblib.load('modele_final.pkl')
-scaler = joblib.load('scaler_final.pkl')
+modele = joblib.load('models/modele_final.pkl')
+scaler = joblib.load('models/scaler_final.pkl')
 
 def predire_panne(km_brut, etat_brut):
     # On met les données dans le bon format pour le scaler
