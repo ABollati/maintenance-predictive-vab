@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 # 1. Chargement du "cerveau" sauvegardé
-modele_rf = joblib.load('modele_forest.pkl')
+modele_rf = joblib.load('models/modele_forest.pkl')
 
 
 #BLOC D'ORCHESTRATION DU SCRIPT
