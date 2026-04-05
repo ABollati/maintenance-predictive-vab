@@ -113,7 +113,7 @@ if __name__ == "__main__":
     afficher_importance(modele_rf)
     
     # On sauvegarde le modèle entraîné
-    joblib.dump(modele_rf, 'modele_forest.pkl')
+    joblib.dump(modele_rf, 'models/modele_forest.pkl')
     print("Modèle Forêt Aléatoire sauvegardé avec succès.")
     
     print("--- MISSION TERMINÉE : MODÈLE PARÉ À L'EMPLOI ---")
