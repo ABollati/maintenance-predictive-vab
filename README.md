@@ -15,13 +15,19 @@ J'ai comparé deux modèles d'apprentissage automatique :
 1. **Cloner le répertoire** :
    ```bash
    git clone https://github.com/ABollati/maintenance-predictive-vab.git
+   ```
+   
+2. **Entrer dans le projet** :
+   ```bash
    cd maintenance-predictive-vab
    ```
- 2. **Installer les dépendances** :
+
+3. **Installer les dépendances** :
     Assurez-vous d'avoir Python installé, puis lancez :
     ```bash
     pip install -r requirements.txt
     ```
+    
 ## Utilisation
 
 Le projet est divisé en deux phases : l'entraînement des modèles et la prédiction en conditions réelles.
