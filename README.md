@@ -14,7 +14,7 @@ J'ai comparé deux modèles d'apprentissage automatique :
 
 1. **Cloner le répertoire** :
    ```bash
-   git clone [https://github.com/ABollati/maintenance-predictive-vab.git](https://github.com/ABollati/maintenance-predictive-vab.git)
+   git clone https://github.com/ABollati/maintenance-predictive-vab.git
    cd maintenance-predictive-vab
    ```
  2. **Installer les dépendances** :
