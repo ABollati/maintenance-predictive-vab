@@ -93,7 +93,9 @@ if __name__ == "__main__":
             }
             df_raw = pd.DataFrame(data_exception)
         return df_raw
-            
+
+    df_raw = charger_donnees()
+    
         #On crée une copie pour garder la donnée originale
     df = df_raw.copy()
     
