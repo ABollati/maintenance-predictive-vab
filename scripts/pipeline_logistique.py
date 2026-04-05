@@ -119,8 +119,8 @@ if __name__ == "__main__":
     print(f"Coefficient état : {coefs[1]:.2f}")
         
     # 4. Sauvegarde
-    joblib.dump(mon_modele, "modele_final.pkl")
-    joblib.dump(mon_scaler, "scaler_final.pkl")
+    joblib.dump(mon_modele, "models/modele_final.pkl")
+    joblib.dump(mon_scaler, "models/scaler_final.pkl")
     
     print("--- MISSION TERMINÉE : MODÈLE PARÉ À L'EMPLOI ---")
 
