@@ -4,25 +4,6 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 
-# data_piege = {
-#     'id': [1, 2, 3, 3, 4, 5, 6], 
-#     'km': [10000, 23000, 23000, "INC", -1200, 1500000, np.nan],
-#     'etat': [0, 1, 1, 2, 2, 1, np.nan],
-#     'panne': [1,0,0,0,1,0,1]
-# }
-# Note : 'INC' simule une erreur de saisie texte
-# id 3 est un doublon
-# 1 500 000 km est une aberration (supérieur à la limite de 1 000 000)
-
-data_piege = {
-    'id': [101, 102, 103, 104, 105],
-    'km': [15000, 45000, 12000, 60000, 32000],
-    'etat': [2, 1, 2, 0, 1],
-    'panne': [0, 0, 0, 1, 0] # 1 = Oui, 0 = Non
-}
-
-df_piege = pd.DataFrame(data_piege)
-
 #1: NETTOYAGE DES DONNEES
 
 #Suppression des doublons
@@ -97,10 +78,25 @@ if __name__ == "__main__":
     print("--- DÉMARRAGE DU PIPELINE FORÊTS ALEATOIRES ---")
     
     # 1. Chargement (On simule ou on charge un CSV)
-    #df_raw = pd.read_csv("donnees_vab_brutes.csv") 
+    def charger_donnees():
+        try:
+            df = pd.read_csv('data/donnees_brutes_vab.csv')
+            print("Chargement depuis le CSV réussi.")
+        except FileNotFoundError:
+            print("CSV introuvable. Génération du jeu de données de secours...")
+            data_exception = {
+                'id': [101, 102, 103, 104, 105],
+                'km': [15000, 45000, 12000, 60000, 32000],
+                'etat': [2, 1, 2, 0, 1],
+                'panne': [0, 0, 0, 1, 0]
+            }
+            df = pd.DataFrame(data_exception)
+        return df
+
+    df_raw = charger_donnees()
     
     #Copie des données pour garder la dataframe originale
-    df = df_piege.copy()
+    df = df_raw.copy()
     
     # 2. Nettoyage
     df_clean = nettoyer_donnees(df)
