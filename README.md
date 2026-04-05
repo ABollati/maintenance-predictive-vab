@@ -40,7 +40,7 @@ Le projet est divisé en deux phases : l'entraînement des modèles et la prédi
     ```
     
 2. **Prédiction (Terrain)** :
-   Pour tester la probabilité de panne d'un véhicule spécifique, lancez l'un des scripts, par exemple :
+   Pour tester la probabilité de panne d'un véhicule spécifique, lancez l'un des deux scripts "prediction_logistique.py" ou "prediction_forest.py":
    ```bash
    python scripts/prediction_logistique.py
    ```
