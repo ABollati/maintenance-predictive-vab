@@ -29,13 +29,13 @@ Le projet est divisé en deux phases : l'entraînement des modèles et la prédi
 1. **Entraînement (Pipelines)** :
     Pour ré-entraîner les modèles avec de nouvelles données historiques :
     ```bash
-    python pipeline_logistique.py
-    python pipeline_forest.py
+    python scripts/pipeline_logistique.py
+    python scripts/pipeline_forest.py
     ```
     
 2. **Prédiction (Terrain)** :
    Pour tester la probabilité de panne d'un véhicule spécifique, lancez l'un des scripts, par exemple :
    ```bash
-   python prediction_logistique.py
+   python scripts/prediction_logistique.py
    ```
    Le système vous demandera alors de saisir le kilométrage et l'état du moteur (0: Critique, 1: Moyen, 2: Bon).
