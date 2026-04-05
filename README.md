@@ -27,7 +27,10 @@ J'ai comparé deux modèles d'apprentissage automatique :
     ```bash
     pip install -r requirements.txt
     ```
-    
+
+## Travaux de Recherche
+Le dossier `research/` contient les scripts de prototypage (`mission_vab`, `mission_nettoyage`) ayant servi à valider les briques logiques avant leur intégration dans les pipelines finaux.
+
 ## Utilisation
 
 Le projet est divisé en deux phases : l'entraînement des modèles et la prédiction en conditions réelles.
