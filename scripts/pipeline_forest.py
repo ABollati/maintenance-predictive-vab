@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # 1. Chargement (On simule ou on charge un CSV)
     def charger_donnees():
         try:
-            df = pd.read_csv('data/donnees_brutes_vab.csv')
+            df_raw = pd.read_csv('data/donnees_brutes_vab.csv')
             print("Chargement depuis le CSV réussi.")
         except FileNotFoundError:
             print("CSV introuvable. Génération du jeu de données de secours...")
@@ -90,7 +90,7 @@ if __name__ == "__main__":
                 'etat': [2, 1, 2, 0, 1],
                 'panne': [0, 0, 0, 1, 0]
             }
-            df = pd.DataFrame(data_exception)
+            df_raw = pd.DataFrame(data_exception)
         return df
 
     df_raw = charger_donnees()
