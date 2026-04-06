@@ -84,7 +84,7 @@ if __name__ == "__main__":
             df_raw = pd.read_csv("data/donnees_brutes_vab.csv") 
             print("Chargement depuis le CSV réussi.")
         except FileNotFoundError:
-            print("Erreur : Le fichier 'donnees_vab_brutes.csv' est introuvable. Génération du jeu de données de secours...")
+            print("CSV introuvable. Génération du jeu de données de secours...")
             data_exception = {
             'id': [101, 102, 103, 104, 105],
             'km': [15000, 45000, 12000, 60000, 32000],
