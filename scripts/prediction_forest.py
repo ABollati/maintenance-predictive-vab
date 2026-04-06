@@ -17,7 +17,7 @@ if __name__ == "__main__":
     km = float(input("Entrez le kilométrage actuel : "))
     etat = int(input("Entrez l'état (0:Mauvais, 1:Moyen, 2:Bon) : "))
     
-    nouveau_vab = pd.dataframe([[km,etat]], columns = ['km','etat'])
+    nouveau_vab = pd.DataFrame([[km,etat]], columns = ['km','etat'])
     
     proba_rf = modele_rf.predict_proba(nouveau_vab)[0][1]
     print(f"Probabilité de panne (Forêt) : {proba_rf:.2%}")
