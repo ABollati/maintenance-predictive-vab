@@ -81,7 +81,7 @@ if __name__ == "__main__":
     # 1. Chargement (On simule ou on charge un CSV)
     def charger_donnees():
         try:
-            df_raw = pd.read_csv("data/donnees_vab_brutes.csv") 
+            df_raw = pd.read_csv("data/donnees_brutes_vab.csv") 
             print("Données chargées avec succès.")
         except FileNotFoundError:
             print("Erreur : Le fichier 'donnees_vab_brutes.csv' est introuvable. Génération du jeu de données de secours...")
