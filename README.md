@@ -38,6 +38,12 @@ Le projet s'appuie sur un jeu de données de maintenance (format CSV).
     ```bash
     pip install -r requirements.txt
     ```
+4. **Créer un environnement virtuel** (recommandé) :
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Sur Mac/Linux
+   venv\Scripts\activate     # Sur Windows
+   ```
 
 ## Travaux de Recherche
 Le dossier `research/` contient les scripts de prototypage (`mission_vab`, `mission_nettoyage`) ayant servi à valider les briques logiques avant leur intégration dans les pipelines finaux.
