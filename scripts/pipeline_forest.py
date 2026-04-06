@@ -91,7 +91,7 @@ if __name__ == "__main__":
                 'panne': [0, 0, 0, 1, 0]
             }
             df_raw = pd.DataFrame(data_exception)
-        return df
+        return df_raw
 
     df_raw = charger_donnees()
     
