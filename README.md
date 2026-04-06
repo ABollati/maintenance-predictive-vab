@@ -34,11 +34,12 @@ Le projet s'appuie sur un jeu de données de maintenance (format CSV).
    ```
 
 3. **Installer les dépendances** :
-    Assurez-vous d'avoir Python installé, puis lancez :
+   Ce projet a été développé sous Python 3.11. Pour garantir la compatibilité des modèles, il est recommandé d'utiliser cette version ou une version supérieure.
+   Assurez-vous d'avoir Python installé, puis lancez :
     ```bash
     pip install -r requirements.txt
     ```
-4. **Créer un environnement virtuel** (recommandé) :
+5. **Créer un environnement virtuel** (recommandé) :
    ```bash
    python -m venv venv
    source venv/bin/activate  # Sur Mac/Linux
