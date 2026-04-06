@@ -33,7 +33,7 @@ Le projet s'appuie sur un jeu de données de maintenance (format CSV).
    cd maintenance-predictive-vab
    ```
 
-3. **Installer les dépendances** :
+3. **Installer les dépendances** :  
    Ce projet a été développé sous Python 3.11. Pour garantir la compatibilité des modèles, il est recommandé d'utiliser cette version ou une version supérieure.
    Assurez-vous d'avoir Python installé, puis lancez :
     ```bash
