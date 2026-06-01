@@ -107,7 +107,9 @@ The script will prompt for mileage, engine condition, vehicle age, number of rev
 
 ## Model Comparison
 
-Results from 5-fold cross-validation (mean ± std):
+### Cross-Validation
+
+Results from 5-fold cross-validation at the default threshold of 0.5 (mean ± std):
 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |---|---|---|---|---|
@@ -115,14 +117,28 @@ Results from 5-fold cross-validation (mean ± std):
 | Random Forest | 0.855 ± 0.014 | 0.489 ± 0.113 | 0.217 ± 0.055 | 0.300 ± 0.074 |
 
 > **Note:** The dataset has a ~14% positive class rate (realistic class imbalance).  
-> Accuracy alone is therefore misleading — Precision, Recall, and F1-Score are the relevant metrics here.  
-> The two models perform similarly at the default threshold of 0.5. The decision threshold is optimised via the Precision-Recall curve (see pipeline scripts), improving Recall from ~0.22 to ~0.60 at a Precision of ~0.40 — a meaningful trade-off in a maintenance context where a missed breakdown is more costly than a false alarm.
+> Accuracy alone is therefore misleading — Precision, Recall, and F1-Score are the relevant metrics here.
 
 ### Precision-Recall Curves
 
 ROC curves can be misleading on imbalanced datasets: the large number of true negatives inflates the AUC, making models appear stronger than they are. Precision-Recall curves focus exclusively on the minority class (breakdowns), making them more informative in this context.
 
 The baseline (dashed line) represents a random classifier at the positive class rate (~14%). A useful model must stay well above this line. The summary metric is **Average Precision (AP)**, the area under the PR curve.
+
+Curves are saved to `figures/pr_curves.png` (alongside `roc_curves.png` and `confusion_matrices.png`) by running `model_comparison.py`.
+
+### Threshold Optimisation
+
+The default threshold of 0.5 is suboptimal for imbalanced data. An F1-maximising threshold is computed for each model from the Precision-Recall curve via 5-fold cross-validation:
+
+| Model | Threshold | Precision | Recall | F1 |
+|---|---|---|---|---|
+| Logistic Regression — default | 0.50 | 0.581 | 0.217 | 0.316 |
+| Logistic Regression — optimal | **0.174** | 0.377 | **0.783** | **0.508** |
+| Random Forest — default | 0.50 | 0.490 | 0.217 | 0.301 |
+| Random Forest — optimal | **0.226** | 0.398 | **0.643** | **0.492** |
+
+> In a maintenance context, a missed breakdown is more costly than a false alarm. The optimal threshold substantially improves Recall at an acceptable Precision cost.
 
 Feature weights from training on the full dataset (via `pipeline_*.py`):
 
