@@ -140,6 +140,8 @@ The default threshold of 0.5 is suboptimal for imbalanced data. An F1-maximising
 
 > In a maintenance context, a missed breakdown is more costly than a false alarm. The optimal threshold substantially improves Recall at an acceptable Precision cost.
 
+### Feature Weights
+
 Feature weights from training on the full dataset (via `pipeline_*.py`):
 
 | Feature | LR Coefficient | RF Importance |
