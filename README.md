@@ -105,7 +105,7 @@ python scripts/prediction_forest.py
 ```
 The script will prompt for mileage, engine condition, vehicle age, number of revisions, and engine temperature.
 
-## Model Comparison
+## Results
 
 ### Cross-Validation
 
@@ -154,8 +154,7 @@ Feature weights from training on the full dataset (via `pipeline_*.py`):
 
 > LR coefficients are signed (negative = reduces breakdown risk) and scaled (MinMax). RF importances measure how much each feature contributes to mean impurity decrease in the random forest.
 
-## Limitations
+### Potential Improvements
 
-- **Collinearity:** Several feature pairs are correlated by construction (`engine_temperature`/`condition`, `km`/`vehicle_age`, `km`/`num_revisions`, `vehicle_age`/`num_revisions`). For Logistic Regression, this makes individual coefficients less reliable to interpret. For Random Forest, importance is diluted across correlated features — each importance value is likely underestimated.
-- **Feature reduction:** Dropping either `condition` or `engine_temperature` (the most collinear pair) could reduce redundancy without significant loss of predictive signal.
+- **Collinearity:** Several feature pairs are correlated by construction (`engine_temperature`/`condition`, `km`/`vehicle_age`, `km`/`num_revisions`, `vehicle_age`/`num_revisions`). For Logistic Regression, this makes individual coefficients less reliable to interpret. For Random Forest, importance is diluted across correlated features — each importance value is likely underestimated. Dropping either `condition` or `engine_temperature` (the most collinear pair) could reduce redundancy without significant loss of predictive signal.
 
