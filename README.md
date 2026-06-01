@@ -156,5 +156,5 @@ Feature weights from training on the full dataset (via `pipeline_*.py`):
 
 ### Potential Improvements
 
-- **Collinearity:** Several feature pairs are correlated by construction (`engine_temperature`/`condition`, `km`/`vehicle_age`, `km`/`num_revisions`, `vehicle_age`/`num_revisions`). For Logistic Regression, this makes individual coefficients less reliable to interpret. For Random Forest, importance is diluted across correlated features — each importance value is likely underestimated. Dropping either `condition` or `engine_temperature` (the most collinear pair) could reduce redundancy without significant loss of predictive signal.
+EDA revealed correlated feature pairs (`engine_temperature`/`condition`, `km`/`vehicle_age`, `km`/`num_revisions`, `vehicle_age`/`num_revisions`). For Logistic Regression, this makes individual coefficients less reliable to interpret. For Random Forest, importance is diluted across correlated features — each importance value is likely underestimated. Dropping either `condition` or `engine_temperature` (the most collinear pair) could reduce redundancy without significant loss of predictive signal.
 
