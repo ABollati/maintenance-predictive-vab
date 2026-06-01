@@ -31,9 +31,11 @@ maintenance-predictive-vab/
 │   ├── roc_curves.png               # Side-by-side ROC curves
 │   └── pr_curves.png                # Side-by-side Precision-Recall curves
 ├── models/
-│   ├── model_logistic.pkl             # Trained Logistic Regression model
-│   ├── scaler_logistic.pkl             # MinMaxScaler (for Logistic Regression)
-│   └── model_forest.pkl            # Trained Random Forest model
+│   ├── model_logistic.pkl           # Trained Logistic Regression model
+│   ├── scaler_logistic.pkl          # MinMaxScaler (for Logistic Regression)
+│   ├── threshold_logistic.pkl       # Optimal decision threshold — Logistic Regression
+│   ├── model_forest.pkl             # Trained Random Forest model
+│   └── threshold_forest.pkl         # Optimal decision threshold — Random Forest
 ├── notebooks/
 │   └── 01_eda_vab.ipynb             # Exploratory Data Analysis
 ├── scripts/
@@ -87,7 +89,7 @@ python scripts/model_comparison.py
 
 ### 3. Train Final Models
 
-Train each model on the full dataset and save to `models/`. Prints feature weights (LR coefficients and RF importances):
+Train each model on the full dataset. Saves the model, scaler (LR only), and the optimal decision threshold derived from the Precision-Recall curve via 5-fold CV:
 ```bash
 python scripts/pipeline_logistic.py
 python scripts/pipeline_forest.py
@@ -114,7 +116,7 @@ Results from 5-fold cross-validation (mean ± std):
 
 > **Note:** The dataset has a ~14% positive class rate (realistic class imbalance).  
 > Accuracy alone is therefore misleading — Precision, Recall, and F1-Score are the relevant metrics here.  
-> The two models perform similarly; both show room for improvement, particularly on Recall (detecting actual breakdowns). Setting `class_weight='balanced'` on the Logistic Regression would penalise missed breakdowns more heavily and is expected to improve Recall at the cost of Precision.
+> The two models perform similarly at the default threshold of 0.5. The decision threshold is optimised via the Precision-Recall curve (see pipeline scripts), improving Recall from ~0.22 to ~0.60 at a Precision of ~0.40 — a meaningful trade-off in a maintenance context where a missed breakdown is more costly than a false alarm.
 
 ### Precision-Recall Curves
 

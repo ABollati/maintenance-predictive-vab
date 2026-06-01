@@ -9,6 +9,7 @@ import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -19,7 +20,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_validate, cross_val_predict
 from sklearn.metrics import (
     confusion_matrix, roc_curve, auc, ConfusionMatrixDisplay,
-    precision_recall_curve, average_precision_score
+    precision_recall_curve, average_precision_score,
+    precision_score, recall_score, f1_score
 )
 
 from data_utils import FEATURES, TARGET, load_data, clean_data
@@ -107,6 +109,29 @@ def plot_roc_curves(models, X, y, probas):
     plt.close()
 
 
+def print_threshold_analysis(models, y, probas):
+    print("\n--- THRESHOLD ANALYSIS (PR-optimal vs default 0.50) ---")
+    for name, _ in models:
+        p, r, thresholds = precision_recall_curve(y, probas[name])
+        f1 = 2 * p[:-1] * r[:-1] / (p[:-1] + r[:-1] + 1e-8)
+        opt_idx = np.argmax(f1)
+        opt_t = float(thresholds[opt_idx])
+
+        y_default = (probas[name] >= 0.50).astype(int)
+        y_opt     = (probas[name] >= opt_t).astype(int)
+
+        print(f"\n  {name}  (optimal threshold: {opt_t:.3f})")
+        print(f"  {'':22s} {'Precision':>10} {'Recall':>10} {'F1':>10}")
+        print(f"  {'Default (0.50)':22s}"
+              f" {precision_score(y, y_default):>10.3f}"
+              f" {recall_score(y, y_default):>10.3f}"
+              f" {f1_score(y, y_default):>10.3f}")
+        print(f"  {'Optimal':22s}"
+              f" {precision_score(y, y_opt):>10.3f}"
+              f" {recall_score(y, y_opt):>10.3f}"
+              f" {f1_score(y, y_opt):>10.3f}")
+
+
 def plot_pr_curves(models, X, y, probas):
     baseline = y.mean()
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -157,4 +182,5 @@ if __name__ == "__main__":
     plot_confusion_matrices(models, X, y)
     plot_roc_curves(models, X, y, probas)
     plot_pr_curves(models, X, y, probas)
+    print_threshold_analysis(models, y, probas)
     print("=" * 60)
